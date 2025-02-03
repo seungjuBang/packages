@@ -238,9 +238,12 @@ class MarkdownBuilder implements md.NodeVisitor {
         final int length = _tables.single.rows.length;
         BoxDecoration? decoration =
             styleSheet.tableCellsDecoration as BoxDecoration?;
-        if (length == 0 || length.isOdd) {
+        
+        // decoration for header
+        if (_tables.single.rows.isNotEmpty) {
           decoration = null;
         }
+        
         _tables.single.rows.add(TableRow(
           decoration: decoration,
           // TODO(stuartmorgan): This should be fixed, not suppressed; enabling
